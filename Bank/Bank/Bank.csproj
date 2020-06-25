@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateCardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateCardForm.Designer.cs">
+      <DependentUpon>CreateCardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DB.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -71,6 +77,9 @@
     <Compile Include="RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CreateCardForm.resx">
+      <DependentUpon>CreateCardForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,6 +110,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -35,10 +35,11 @@ namespace Bank
             command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = userPass;
             adapter.SelectCommand = command;
             adapter.Fill(table);
+
             if (table.Rows.Count > 0)
             {
                 this.Hide();
-                MainWin mw = new MainWin();
+                MainWin mw = new MainWin(userPhone,userPass);
                 mw.Show();
 
             }

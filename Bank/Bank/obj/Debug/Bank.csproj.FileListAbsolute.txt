@@ -54,3 +54,4 @@ C:\x3n2\GIT\Bank13\Bank\Bank\obj\Debug\Bank.csproj.CoreCompileInputs.cache
 C:\x3n2\GIT\Bank13\Bank\Bank\obj\Debug\Bank.csproj.CopyComplete
 C:\x3n2\GIT\Bank13\Bank\Bank\obj\Debug\Bank.exe
 C:\x3n2\GIT\Bank13\Bank\Bank\obj\Debug\Bank.pdb
+D:\gitProjects\Bank13\Bank\Bank\obj\Debug\Bank.CreateCardForm.resources

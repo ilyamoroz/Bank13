@@ -55,34 +55,16 @@ namespace Bank
             }
             return true;
         }
-        public string CreateCardNmber()
-        {
-            var Rand = new Random();
-            string cardNumber = "";
-            for (int counter = 0; counter < 4; counter++)
-            {
-                int cardNumberPart = Rand.Next(1000, 9999);
-                cardNumber += Convert.ToString(cardNumberPart);
-            }
-            return cardNumber;
-        }
-        public int CreatePIN()
-        {
-            var Rand = new Random();
-            int pin = Rand.Next(1000, 9999);
-            return pin;
-
-        }
         public void PushToDB(string sName,string fName,string fathName,string phoneN,string pass)
         {
             DB db = new DB();
 
             MySqlCommand command = new MySqlCommand("INSERT INTO `users`(`CardNum`, `SecondName`, " +
-            "`FirstName`, `FathersName`, `PhoneNum`, `Password`, `PIN`, `Balance`) VALUES (@cardn," +
-            "@sname,@firname,@fathname,@phon,@pass,@pin,0);", db.GetConnection());
+            "`FirstName`, `FathersName`, `PhoneNum`, `Password`, `PIN`, `Balance`) VALUES (0," +
+            "@sname,@firname,@fathname,@phon,@pass,0,0);", db.GetConnection());
 
-            command.Parameters.Add("@cardn", MySqlDbType.VarChar).Value = CreateCardNmber();
-            command.Parameters.Add("@pin", MySqlDbType.VarChar).Value = CreatePIN();
+            //command.Parameters.Add("@cardn", MySqlDbType.VarChar).Value = CreateCardNmber();
+            //command.Parameters.Add("@pin", MySqlDbType.VarChar).Value = CreatePIN();
             command.Parameters.Add("@sname", MySqlDbType.VarChar).Value = sName;
             command.Parameters.Add("@firname", MySqlDbType.VarChar).Value = fName;
             command.Parameters.Add("@fathname", MySqlDbType.VarChar).Value = fathName;
@@ -99,7 +81,6 @@ namespace Bank
             }
             db.closeConnection();
         }
-
         public RegistrationForm()
         {
             InitializeComponent();
@@ -142,7 +123,6 @@ namespace Bank
             else
                 PassInpRepeat.UseSystemPasswordChar = true;
         }
-
         private void PhoneNumInp_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.')
@@ -153,7 +133,6 @@ namespace Bank
                     e.Handled = false;
             }
         }
-
         private void FirstNameInp_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
