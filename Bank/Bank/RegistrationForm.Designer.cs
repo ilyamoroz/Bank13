@@ -267,6 +267,7 @@
             this.Name = "RegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegistrationForm";
+            this.Load += new System.EventHandler(this.RegistrationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PassStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PassRepStatus)).EndInit();
             this.ResumeLayout(false);
