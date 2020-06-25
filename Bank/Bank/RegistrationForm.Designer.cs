@@ -45,6 +45,11 @@
             this.BackToLogButton = new System.Windows.Forms.Button();
             this.VisiblePass = new System.Windows.Forms.CheckBox();
             this.VisiblePass1 = new System.Windows.Forms.CheckBox();
+            this.PassStatus = new System.Windows.Forms.PictureBox();
+            this.PassRepStatus = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.PassStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassRepStatus)).BeginInit();
             this.SuspendLayout();
             // 
             // closeButton
@@ -63,6 +68,7 @@
             this.FirstNameInp.Name = "FirstNameInp";
             this.FirstNameInp.Size = new System.Drawing.Size(149, 20);
             this.FirstNameInp.TabIndex = 5;
+            this.FirstNameInp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FirstNameInp_KeyPress);
             // 
             // SecondNameInp
             // 
@@ -70,6 +76,7 @@
             this.SecondNameInp.Name = "SecondNameInp";
             this.SecondNameInp.Size = new System.Drawing.Size(149, 20);
             this.SecondNameInp.TabIndex = 6;
+            this.SecondNameInp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SecondNameInp_KeyPress);
             // 
             // FathersNameInp
             // 
@@ -77,6 +84,7 @@
             this.FathersNameInp.Name = "FathersNameInp";
             this.FathersNameInp.Size = new System.Drawing.Size(149, 20);
             this.FathersNameInp.TabIndex = 7;
+            this.FathersNameInp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FathersNameInp_KeyPress);
             // 
             // PhoneNumInp
             // 
@@ -84,6 +92,7 @@
             this.PhoneNumInp.Name = "PhoneNumInp";
             this.PhoneNumInp.Size = new System.Drawing.Size(149, 20);
             this.PhoneNumInp.TabIndex = 8;
+            this.PhoneNumInp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneNumInp_KeyPress);
             // 
             // PassInp
             // 
@@ -92,6 +101,8 @@
             this.PassInp.Size = new System.Drawing.Size(149, 20);
             this.PassInp.TabIndex = 9;
             this.PassInp.UseSystemPasswordChar = true;
+            this.PassInp.TextChanged += new System.EventHandler(this.PassInp_TextChanged);
+            this.PassInp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PassInp_KeyPress);
             // 
             // PassInpRepeat
             // 
@@ -100,6 +111,8 @@
             this.PassInpRepeat.Size = new System.Drawing.Size(149, 20);
             this.PassInpRepeat.TabIndex = 10;
             this.PassInpRepeat.UseSystemPasswordChar = true;
+            this.PassInpRepeat.TextChanged += new System.EventHandler(this.PassInpRepeat_TextChanged);
+            this.PassInpRepeat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PassInpRepeat_KeyPress);
             // 
             // FirstNameLabel
             // 
@@ -131,11 +144,11 @@
             // PhoneNumLabel
             // 
             this.PhoneNumLabel.AutoSize = true;
-            this.PhoneNumLabel.Location = new System.Drawing.Point(109, 258);
+            this.PhoneNumLabel.Location = new System.Drawing.Point(96, 261);
             this.PhoneNumLabel.Name = "PhoneNumLabel";
-            this.PhoneNumLabel.Size = new System.Drawing.Size(78, 13);
+            this.PhoneNumLabel.Size = new System.Drawing.Size(93, 13);
             this.PhoneNumLabel.TabIndex = 14;
-            this.PhoneNumLabel.Text = "Phone Number";
+            this.PhoneNumLabel.Text = "Phone Number   +";
             // 
             // PassLabel0
             // 
@@ -197,11 +210,42 @@
             this.VisiblePass1.UseVisualStyleBackColor = true;
             this.VisiblePass1.CheckedChanged += new System.EventHandler(this.VisiblePass1_CheckedChanged);
             // 
+            // PassStatus
+            // 
+            this.PassStatus.BackColor = System.Drawing.Color.Transparent;
+            this.PassStatus.Location = new System.Drawing.Point(190, 315);
+            this.PassStatus.Name = "PassStatus";
+            this.PassStatus.Size = new System.Drawing.Size(149, 3);
+            this.PassStatus.TabIndex = 21;
+            this.PassStatus.TabStop = false;
+            // 
+            // PassRepStatus
+            // 
+            this.PassRepStatus.BackColor = System.Drawing.Color.Transparent;
+            this.PassRepStatus.Location = new System.Drawing.Point(190, 351);
+            this.PassRepStatus.Name = "PassRepStatus";
+            this.PassRepStatus.Size = new System.Drawing.Size(149, 3);
+            this.PassRepStatus.TabIndex = 22;
+            this.PassRepStatus.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(178, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(161, 22);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Registration Form";
+            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 480);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.PassRepStatus);
+            this.Controls.Add(this.PassStatus);
             this.Controls.Add(this.VisiblePass1);
             this.Controls.Add(this.VisiblePass);
             this.Controls.Add(this.BackToLogButton);
@@ -223,6 +267,8 @@
             this.Name = "RegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegistrationForm";
+            ((System.ComponentModel.ISupportInitialize)(this.PassStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassRepStatus)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,5 +293,8 @@
         private System.Windows.Forms.Button BackToLogButton;
         private System.Windows.Forms.CheckBox VisiblePass;
         private System.Windows.Forms.CheckBox VisiblePass1;
+        private System.Windows.Forms.PictureBox PassStatus;
+        private System.Windows.Forms.PictureBox PassRepStatus;
+        private System.Windows.Forms.Label label1;
     }
 }

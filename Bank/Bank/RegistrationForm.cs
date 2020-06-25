@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,7 +40,7 @@ namespace Bank
                 else { boolpassrep = false; return boolpassrep; }
             }
 
-            if(boolpass == true && boolpassrep == true)
+            if(boolpass == true && boolpassrep == true && pass.Length >= 8 && pass.Length <= 16)
             {
                 if (passRep == pass)
                     return true;
@@ -47,6 +48,18 @@ namespace Bank
                     return false;
             }
             return false;
+        }
+        public bool phoneVal(string phone)
+        {
+            for (int i=0; i < phone.Length;i++)
+            {
+                if (!(phone[i] >= '0' && phone[i] <= '9' && phone.Length <= 12))
+                {
+                    MessageBox.Show("Blya");
+                    return false;
+                }
+            }
+            return true;
         }
         public void PushToDB(string sName,string fName,string fathName,string phoneN,string pass)
         {
@@ -78,7 +91,6 @@ namespace Bank
         {
             InitializeComponent();
         }
-
         private void closeButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -89,7 +101,6 @@ namespace Bank
             LoginForm loginForm = new LoginForm();
             loginForm.Show();
         }
-
         private void RegButton_Click(object sender, EventArgs e)
         {
             string fName = FirstNameInp.Text;
@@ -99,12 +110,11 @@ namespace Bank
             string pass = PassInp.Text;
             string repPass = PassInpRepeat.Text;
 
-            if(PassVal(pass, repPass)==true)
+            if(PassVal(pass, repPass)==true && phoneVal(phoneN) == true)
             {
                 PushToDB(sName,fName,fathName,phoneN,pass);
             }
         }
-
         private void VisiblePass_CheckedChanged(object sender, EventArgs e)
         {
             if (VisiblePass.Checked == true)
@@ -112,13 +122,94 @@ namespace Bank
             else
                 PassInp.UseSystemPasswordChar = true;
         }
-
         private void VisiblePass1_CheckedChanged(object sender, EventArgs e)
         {
             if(VisiblePass1.Checked == true)
                 PassInpRepeat.UseSystemPasswordChar = false;
             else
                 PassInpRepeat.UseSystemPasswordChar = true;
+        }
+
+        private void PhoneNumInp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.')
+                || PhoneNumInp.TextLength > 12)
+            {
+                e.Handled = true;
+                if (e.KeyChar == (char)8)
+                    e.Handled = false;
+            }
+        }
+
+        private void FirstNameInp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void SecondNameInp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void FathersNameInp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+        public bool Status(string text)
+        {
+            bool check = false;
+            if (text.Length < 8 || text.Length > 16)
+                return false;
+            else
+                check = true;
+            for (int i=0;i<text.Length;i++)
+            {
+                if (!(text[i] >= 'A' && text[i] <= 'Z' || text[i] >= 'a' && text[i] <= 'z'
+                    || text[i] >= '0' && text[i] <= '9'))
+                    return false;
+                else
+                    check = true;
+                Console.WriteLine(text[i]);
+            }
+            return check;
+        }
+        private void PassInp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (PassInp.TextLength == 16)
+            {
+                e.Handled = true;
+                if (e.KeyChar == (char)8)
+                    e.Handled = false;
+            }
+        }
+
+        private void PassInpRepeat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (PassInpRepeat.TextLength == 16)
+            {
+                e.Handled = true;
+                if (e.KeyChar == (char)8)
+                    e.Handled = false;
+            }
+        }
+        private void PassInp_TextChanged(object sender, EventArgs e)
+        {
+            if (Status(PassInp.Text) == true)
+                PassStatus.BackColor = Color.LimeGreen;
+            else if(PassInp.Text == "")
+                PassStatus.BackColor = Color.Transparent;
+            else
+                PassStatus.BackColor = Color.Red;
+        }
+
+        private void PassInpRepeat_TextChanged(object sender, EventArgs e)
+        {
+            if (PassInp.Text == PassInpRepeat.Text)
+                PassRepStatus.BackColor = Color.LimeGreen;
+            else if(PassInpRepeat.Text == "")
+                PassRepStatus.BackColor = Color.Transparent;
+            else
+                PassRepStatus.BackColor = Color.Red;
         }
     }
 }

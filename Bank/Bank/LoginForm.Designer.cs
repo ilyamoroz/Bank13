@@ -45,6 +45,7 @@
             this.PhoneInp.Name = "PhoneInp";
             this.PhoneInp.Size = new System.Drawing.Size(150, 20);
             this.PhoneInp.TabIndex = 0;
+            this.PhoneInp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneInp_KeyPress);
             // 
             // PassInp
             // 
@@ -79,9 +80,9 @@
             this.phoneNumLabel.AutoSize = true;
             this.phoneNumLabel.Location = new System.Drawing.Point(60, 153);
             this.phoneNumLabel.Name = "phoneNumLabel";
-            this.phoneNumLabel.Size = new System.Drawing.Size(88, 13);
+            this.phoneNumLabel.Size = new System.Drawing.Size(94, 13);
             this.phoneNumLabel.TabIndex = 4;
-            this.phoneNumLabel.Text = "Phone number  +";
+            this.phoneNumLabel.Text = "Phone number    +";
             // 
             // PassLabel
             // 

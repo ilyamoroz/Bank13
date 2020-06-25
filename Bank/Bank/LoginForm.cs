@@ -47,20 +47,29 @@ namespace Bank
         {
             Application.Exit();
         }
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
             RegistrationForm register = new RegistrationForm();
             register.Show();
         }
-
         private void VisiblePass_CheckedChanged(object sender, EventArgs e)
         {
             if (VisiblePass.Checked == true)
                 PassInp.UseSystemPasswordChar = false;
             else
                 PassInp.UseSystemPasswordChar = true;
+        }
+
+        private void PhoneInp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') 
+                || PhoneInp.TextLength > 12)
+            {
+                e.Handled = true;
+                if (e.KeyChar == (char)8)
+                    e.Handled = false;
+            }
         }
     }
 }
