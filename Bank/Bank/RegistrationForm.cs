@@ -60,11 +60,8 @@ namespace Bank
             DB db = new DB();
 
             MySqlCommand command = new MySqlCommand("INSERT INTO `users`(`CardNum`, `SecondName`, " +
-            "`FirstName`, `FathersName`, `PhoneNum`, `Password`, `PIN`, `Balance`) VALUES (0," +
-            "@sname,@firname,@fathname,@phon,@pass,0,0);", db.GetConnection());
-
-            //command.Parameters.Add("@cardn", MySqlDbType.VarChar).Value = CreateCardNmber();
-            //command.Parameters.Add("@pin", MySqlDbType.VarChar).Value = CreatePIN();
+                "`FirstName`, `FathersName`, `PhoneNum`, `Password`, `PIN`, `Balance`) VALUES (0," +
+                "@sname,@firname,@fathname,@phon,@pass,0,0);", db.GetConnection());
             command.Parameters.Add("@sname", MySqlDbType.VarChar).Value = sName;
             command.Parameters.Add("@firname", MySqlDbType.VarChar).Value = fName;
             command.Parameters.Add("@fathname", MySqlDbType.VarChar).Value = fathName;

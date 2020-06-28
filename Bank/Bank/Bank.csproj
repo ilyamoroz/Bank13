@@ -77,6 +77,12 @@
     <Compile Include="RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TranferMoney.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TranferMoney.Designer.cs">
+      <DependentUpon>TranferMoney.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CreateCardForm.resx">
       <DependentUpon>CreateCardForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,6 +103,9 @@
     </Compile>
     <EmbeddedResource Include="RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TranferMoney.resx">
+      <DependentUpon>TranferMoney.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

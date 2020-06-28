@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWin));
             this.closeButton = new System.Windows.Forms.Button();
             this.TopPanel = new System.Windows.Forms.PictureBox();
@@ -36,6 +37,10 @@
             this.UserLabel = new System.Windows.Forms.Label();
             this.CardLabel = new System.Windows.Forms.Label();
             this.PlusImage = new System.Windows.Forms.PictureBox();
+            this.BalanceLabel = new System.Windows.Forms.Label();
+            this.TransferButton = new System.Windows.Forms.Button();
+            this.ChangeButton = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.TopPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlusImage)).BeginInit();
@@ -101,7 +106,7 @@
             this.CardLabel.BackColor = System.Drawing.Color.Transparent;
             this.CardLabel.Font = new System.Drawing.Font("Arial", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CardLabel.ForeColor = System.Drawing.Color.Black;
-            this.CardLabel.Location = new System.Drawing.Point(350, 262);
+            this.CardLabel.Location = new System.Drawing.Point(10, 115);
             this.CardLabel.Name = "CardLabel";
             this.CardLabel.Size = new System.Drawing.Size(552, 33);
             this.CardLabel.TabIndex = 9;
@@ -119,12 +124,53 @@
             this.PlusImage.TabStop = false;
             this.PlusImage.Click += new System.EventHandler(this.PlusImage_Click);
             // 
+            // BalanceLabel
+            // 
+            this.BalanceLabel.AutoSize = true;
+            this.BalanceLabel.Font = new System.Drawing.Font("Arial", 21.75F);
+            this.BalanceLabel.Location = new System.Drawing.Point(365, 472);
+            this.BalanceLabel.Name = "BalanceLabel";
+            this.BalanceLabel.Size = new System.Drawing.Size(128, 33);
+            this.BalanceLabel.TabIndex = 11;
+            this.BalanceLabel.Text = "Balance:";
+            // 
+            // TransferButton
+            // 
+            this.TransferButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TransferButton.Location = new System.Drawing.Point(16, 183);
+            this.TransferButton.Name = "TransferButton";
+            this.TransferButton.Size = new System.Drawing.Size(150, 50);
+            this.TransferButton.TabIndex = 12;
+            this.TransferButton.Text = "Transfer";
+            this.TransferButton.UseVisualStyleBackColor = true;
+            this.TransferButton.Click += new System.EventHandler(this.TransferButton_Click);
+            // 
+            // ChangeButton
+            // 
+            this.ChangeButton.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.ChangeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ChangeButton.Location = new System.Drawing.Point(483, 30);
+            this.ChangeButton.Name = "ChangeButton";
+            this.ChangeButton.Size = new System.Drawing.Size(90, 39);
+            this.ChangeButton.TabIndex = 13;
+            this.ChangeButton.Text = "Change Profile";
+            this.ChangeButton.UseVisualStyleBackColor = false;
+            this.ChangeButton.Click += new System.EventHandler(this.ChangeButton_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            // 
             // MainWin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1200, 750);
+            this.Controls.Add(this.ChangeButton);
+            this.Controls.Add(this.TransferButton);
+            this.Controls.Add(this.BalanceLabel);
             this.Controls.Add(this.PlusImage);
             this.Controls.Add(this.CardLabel);
             this.Controls.Add(this.UserLabel);
@@ -154,5 +200,9 @@
         private System.Windows.Forms.Label UserLabel;
         private System.Windows.Forms.Label CardLabel;
         private System.Windows.Forms.PictureBox PlusImage;
+        private System.Windows.Forms.Label BalanceLabel;
+        private System.Windows.Forms.Button TransferButton;
+        private System.Windows.Forms.Button ChangeButton;
+        private System.Windows.Forms.Timer timer1;
     }
 }
