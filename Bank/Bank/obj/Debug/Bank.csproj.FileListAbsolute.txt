@@ -113,3 +113,5 @@ D:\csharp_projects\Bank13-master\Bank\Bank\obj\Debug\Bank.csproj.CoreCompileInpu
 D:\csharp_projects\Bank13-master\Bank\Bank\obj\Debug\Bank.csproj.CopyComplete
 D:\csharp_projects\Bank13-master\Bank\Bank\obj\Debug\Bank.exe
 D:\csharp_projects\Bank13-master\Bank\Bank\obj\Debug\Bank.pdb
+C:\x3n2\GIT\Bank13\Bank\Bank\obj\Debug\Bank.CreateCardForm.resources
+C:\x3n2\GIT\Bank13\Bank\Bank\obj\Debug\Bank.TranferMoney.resources

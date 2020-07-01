@@ -13,18 +13,24 @@ namespace Bank
 {
     public partial class LoginForm : Form
     {
+        string userPhone;
+        string userPass;
+        
+
         public LoginForm()
         {
             InitializeComponent();
         }
         private void LoginForm_Load(object sender, EventArgs e)
         {
-
+            SavePassword SP = new SavePassword();
+            if (SP.CheckedFile())
+            { 
+                ConnectionToDB(SP.GetData(0), SP.GetData(1));
+            }
         }
-        private void enterButton_Click_1(object sender, EventArgs e)
+        private void ConnectionToDB(string userPhone, string userPass)
         {
-            string userPhone = PhoneInp.Text;
-            string userPass = PassInp.Text;
             DB db = new DB();
             db.openConnection();
             DataTable table = new DataTable();
@@ -35,14 +41,19 @@ namespace Bank
             command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = userPass;
             adapter.SelectCommand = command;
             adapter.Fill(table);
-
             if (table.Rows.Count > 0)
             {
                 this.Hide();
-                MainWin mw = new MainWin(userPhone,userPass);
+                MainWin mw = new MainWin(userPhone, userPass);
+                SavePassword(userPhone, userPass);
                 mw.Show();
+                
 
             }
+        }
+        private void enterButton_Click_1(object sender, EventArgs e)
+        {
+            ConnectionToDB(PhoneInp.Text, PassInp.Text);
         }
         private void closeButton_Click_1(object sender, EventArgs e)
         {
@@ -70,6 +81,13 @@ namespace Bank
                 e.Handled = true;
                 if (e.KeyChar == (char)8)
                     e.Handled = false;
+            }
+        }
+        public void SavePassword(string login, string pass)
+        {
+            if (SavePass.Checked == true)
+            {
+                SavePassword SP = new SavePassword(login, pass);
             }
         }
     }

@@ -75,7 +75,7 @@ namespace Bank
                 PIN = readerSender.GetString(1);
                 if (PIN == pinInp.Text)
                 {
-                    balance = (Convert.ToInt16(balance) - Convert.ToInt16(amount)).ToString();
+                    balance = (Convert.ToInt32(balance) - Convert.ToInt32(amount)).ToString();
                     db.closeConnection();
 
                     db.openConnection();

@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CreateAccLabel = new System.Windows.Forms.LinkLabel();
             this.VisiblePass = new System.Windows.Forms.CheckBox();
+            this.SavePass = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // PhoneInp
@@ -106,7 +107,7 @@
             // CreateAccLabel
             // 
             this.CreateAccLabel.AutoSize = true;
-            this.CreateAccLabel.Location = new System.Drawing.Point(154, 317);
+            this.CreateAccLabel.Location = new System.Drawing.Point(154, 352);
             this.CreateAccLabel.Name = "CreateAccLabel";
             this.CreateAccLabel.Size = new System.Drawing.Size(95, 13);
             this.CreateAccLabel.TabIndex = 7;
@@ -125,11 +126,22 @@
             this.VisiblePass.UseVisualStyleBackColor = true;
             this.VisiblePass.CheckedChanged += new System.EventHandler(this.VisiblePass_CheckedChanged);
             // 
+            // SavePass
+            // 
+            this.SavePass.AutoSize = true;
+            this.SavePass.Location = new System.Drawing.Point(145, 315);
+            this.SavePass.Name = "SavePass";
+            this.SavePass.Size = new System.Drawing.Size(125, 17);
+            this.SavePass.TabIndex = 9;
+            this.SavePass.Text = "Remember password";
+            this.SavePass.UseVisualStyleBackColor = true;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 450);
+            this.Controls.Add(this.SavePass);
             this.Controls.Add(this.VisiblePass);
             this.Controls.Add(this.CreateAccLabel);
             this.Controls.Add(this.label1);
@@ -160,6 +172,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel CreateAccLabel;
         private System.Windows.Forms.CheckBox VisiblePass;
+        private System.Windows.Forms.CheckBox SavePass;
     }
 }
 

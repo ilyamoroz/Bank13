@@ -77,6 +77,7 @@
     <Compile Include="RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SavePassword.cs" />
     <Compile Include="TranferMoney.cs">
       <SubType>Form</SubType>
     </Compile>

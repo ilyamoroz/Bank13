@@ -117,6 +117,8 @@ namespace Bank
 
         private void ChangeButton_Click(object sender, EventArgs e)
         {
+            SavePassword SP = new SavePassword();
+            SP.ClearData();
             LoginForm lf = new LoginForm();
             lf.Show();
             this.Close();
