@@ -30,6 +30,7 @@ namespace Bank
         {
             string recipient = CardNumberInp.Text;
             string amount    = AmountInp.Text;
+            string senderCard = "";
 
             DB db = new DB();
             db.openConnection();
@@ -62,7 +63,7 @@ namespace Bank
             balance = "";
             string PIN = "";
             db.openConnection();
-            MySqlCommand selectCmdSender = new MySqlCommand("SELECT `Balance`, `PIN` FROM `users`"+
+            MySqlCommand selectCmdSender = new MySqlCommand("SELECT `Balance`, `PIN`, `CardNum` FROM `users`"+
                 " WHERE `PhoneNum` = @phone AND `Password` = @pass", db.GetConnection());
             selectCmdSender.Parameters.Add("@phone", MySqlDbType.VarChar).Value = phone;
             selectCmdSender.Parameters.Add("@pass", MySqlDbType.VarChar).Value = pass;
@@ -73,6 +74,7 @@ namespace Bank
             {
                 balance = readerSender.GetString(0);
                 PIN = readerSender.GetString(1);
+                senderCard = readerSender.GetString(2);
                 if (PIN == pinInp.Text)
                 {
                     balance = (Convert.ToInt32(balance) - Convert.ToInt32(amount)).ToString();
@@ -85,9 +87,14 @@ namespace Bank
                     updateCmdSender.Parameters.Add("@pass", MySqlDbType.VarChar).Value = pass;
                     updateCmdSender.Parameters.Add("@bal", MySqlDbType.VarChar).Value = balance;
                     updateCmdSender.ExecuteNonQuery();
+                    transaction(senderCard,recipient,amount);
                 }
                 else
+                {
                     MessageBox.Show("Your PIN doesn't match to a registered!");
+                }
+                    
+
                 db.closeConnection();
             }
             //end sender
@@ -96,6 +103,19 @@ namespace Bank
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void transaction(string cardFrom, string cardTo, string amount)
+        {
+            DB db = new DB();
+            
+            MySqlCommand transactionCommand = new MySqlCommand("INSERT INTO `transaction`(`cardFrom`, `cardTo`, `amount`)"+
+                "VALUES (@cardFrom, @cardTo, @amount)",db.GetConnection());
+            transactionCommand.Parameters.Add("@cardFrom", MySqlDbType.VarChar).Value = cardFrom;
+            transactionCommand.Parameters.Add("@cardTo", MySqlDbType.VarChar).Value = cardTo;
+            transactionCommand.Parameters.Add("@amount", MySqlDbType.Int16).Value = amount;
+            db.openConnection();
+            transactionCommand.ExecuteNonQuery();
+            db.closeConnection();
         }
     }
 }
